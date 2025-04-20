@@ -27,7 +27,7 @@ PANDO enables independent servers to mint and manage cryptographically signed as
   "asset": {
     "id": "abc",
     "owner_email": "clientA@client.com",
-    "origin_email": "serverA@pando.net",
+    "origin_email": "serverA@server.net",
     "data": {
       "seed_str": "...",
       "image_float": 0.25,
