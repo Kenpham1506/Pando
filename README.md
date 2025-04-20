@@ -1,49 +1,28 @@
-🌱 PANDO Protocol
-Peer Audited Network of Decentralized Organisms
+# 🌱 PANDO Protocol
 
-PANDO is a decentralized protocol for managing asset ownership, trust, and verification—without centralized authorities. Inspired by nature’s most resilient organism, Pando the tree, this protocol is built for longevity, transparency, and resistance against manipulation.
+**Peer Audited Network of Decentralized Organisms**
 
-📚 Table of Contents
-Overview
+PANDO is a decentralized protocol for managing asset ownership, trust, and verification—without central authorities. Inspired by Pando the tree, it promotes long-term resilience through transparency, peer auditing, and cryptographic trust.
 
-Entities
+---
 
-Asset Structure
+## 📘 Overview
 
-Core Mechanics
+PANDO enables independent servers to mint and manage cryptographically signed assets, with all actions verified through a trust-based, peer-audited system.
 
-Minting
+---
 
-Transfer
+## 🔹 Entities
 
-Git-Style Log
+- **Server (Node):** Hosts that mint, store, and validate assets.
+- **Client:** Users who own and transfer assets.
+- **Asset:** A signed digital object with verifiable metadata, ownership, and history.
 
-Peer Auditing & Uptime
+---
 
-Reputation System
+## 📦 Asset Format
 
-Security Model
-
-Trust Foundations
-
-Threat Mitigation
-
-Naming & Philosophy
-
-🧠 Overview
-PANDO empowers a network of independent servers to manage digital assets securely, relying on cryptographic proof, mutual audits, and a trust-weighted reputation system to validate the integrity of every action—without centralized control.
-
-🔸 Entities
-Server (Node): Hosts mint and manage assets. Public/private key pairs define their identity.
-
-Client: Owns and transfers assets via signed requests.
-
-Asset: A cryptographically signed object with metadata, origin, and ownership history.
-
-📦 Asset Structure
-json
-Copy
-Edit
+```json
 {
   "asset": {
     "id": "abc",
@@ -58,70 +37,71 @@ Edit
   "origin_signature": "Signed by origin server",
   "owner_signature": "Signed by current owner"
 }
-⚙️ Core Mechanics
-Minting
-Only origin servers mint assets.
+```
+## ⚙️ Core Mechanics
 
-Minting is throttled by uptime history and peer approvals.
+### Minting
 
-Mint events are signed and logged immutably, then peer-audited.
+- Only origin servers can mint.
+- Minting is rate-limited based on uptime and peer validation.
+- Events are logged, hashed, signed, and peer-audited.
 
-Transfer
-Only current owners initiate transfers.
+### Transfer
 
-Transfers require recipient public key and are logged like minting events.
+- Only the current owner can transfer assets.
+- Requires recipient public key and owner signature.
+- Transfers are added to immutable logs.
 
-All changes are signed and peer-reviewed.
+### Git-Style Log
 
-Git-Style Log
-Each server maintains a cryptographically signed log of operations.
+- Each server maintains a signed, append-only log.
+- Peers periodically validate and sign each other’s logs.
 
-Commits are immutable and audited by peer servers.
+---
 
-Any rebase or tampering breaks peer signatures and is detectable.
+## 🔀 Peer Auditing & Uptime
 
-🔁 Peer Auditing & Uptime
-Servers cohost hourly verification sessions.
+- Servers conduct regular verification sessions.
+- Verified uptime unlocks minting rights.
+- Logs are cross-signed by peer servers to ensure integrity.
 
-Session logs are signed by both parties and used to track uptime.
+---
 
-Uptime determines how many assets a server may mint, and how frequently.
+## 🌟 Reputation System
 
-🌟 Reputation System
-Servers earn reputation points for:
+- Servers earn reputation through:
+  - Consistent uptime
+  - Honest audits
+  - Valid minting history
+- Reputation is inherited by assets at mint time.
 
-Consistent uptime sessions
+---
 
-Transparent logs
+## 🔐 Security
 
-Honest audits of others
+### 🔑 Trust Model
 
-Reputation is inherited by assets to reflect trustworthiness.
+- RSA cryptography secures all signatures.
+- Git-style logs prevent history rewriting.
+- All events must be signed and auditable.
 
-New servers can only mint when vetted by high-rep peers.
+### 🛡️ Threat Mitigation
 
-🔐 Security Model
-Trust Foundations
-All actions are RSA-signed and verifiable.
+| Threat                  | Defense                                                                 |
+|------------------------|-------------------------------------------------------------------------|
+| Forged Minting         | Requires validated uptime and peer audits                               |
+| History Rewriting      | Logs are immutable; peer signatures detect tampering                    |
+| Fake Audit Signatures  | RSA verification ensures authenticity                                   |
+| Sybil Attacks          | Reputation-weighted trust + exponential mint cost                       |
+| Rogue Clients          | Clients can only request, not mint or alter metadata                    |
+| Server Collusion       | Logs are public; clients and peers can detect and isolate collusion     |
+| DoS / Spam             | Minting is rate-limited and cost-scaled                                 |
+| Bad Nodes              | Non-cooperating peers can be blacklisted or ignored                     |
 
-Git-style logs ensure no historical tampering.
+---
 
-Peer signatures act as real-time approvals on all critical actions.
+## 🌳 Philosophy
 
-Threat Mitigation
+**PANDO** is not just software—it’s a living organism of decentralized trust. Like its namesake tree, every node is part of a greater whole, resilient through shared roots.
 
-Threat	Mitigation
-Forged Asset Creation	Minting is throttled, audited, and requires multi-server uptime signatures.
-History Rewriting	Logs are immutable after signing. Any tampering breaks existing peer signatures.
-Fake Peer Signatures	RSA ensures peer signatures are verifiable and non-forgeable.
-Sybil Attacks	Reputation-weighted trust and minting limits tied to established audit networks.
-Client Exploits	Clients can’t forge actions; only servers manage metadata and minting.
-Server Collusion	Public logs expose collusion; community can flag, isolate, or ignore dishonest servers.
-DoS / Spam Attacks	Minting and commits are throttled by exponential cost and validation requirements.
-Non-Cooperating Peers	Servers can block, report, or fork away from non-auditing or malicious nodes.
-🌳 Naming & Philosophy
-“Pando is dying—but we are learning.”
-
-Like its namesake, the PANDO Protocol is not a single server or owner, but a vast organism connected at the root—resilient through cooperation and shared trust. PANDO aspires to embody natural decentralization, resisting centralized control through design, not denial.
-
-PANDO is not just a protocol. It’s an ecosystem of honesty, grown through cryptographic roots and trust-based limbs.
+**Together, we grow stronger.**
